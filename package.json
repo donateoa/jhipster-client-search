@@ -1,0 +1,33 @@
+{
+  "name": "jhipster-client-search",
+  "version": "1.0.0",
+  "description": "A simple tool for add a search-bar in jhipster angular entities",
+  "main": "index.js",
+  "scripts": {
+    "build-ts": "tsc",
+    "start": "npm run serve",
+    "serve": "node dist/index.js",
+    "watch-node": "nodemon dist/index.js",
+    "watch-ts": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donateoa/jhipster-client-search.git"
+  },
+  "keywords": [
+    "jhipster",
+    "angular2",
+    "search-bar"
+  ],
+  "author": "Alessandro Donateo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/donateoa/jhipster-client-search/issues"
+  },
+  "homepage": "https://github.com/donateoa/jhipster-client-search#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.11",
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.3"
+  }
+}
