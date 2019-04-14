@@ -1,5 +1,8 @@
+import {IFlow} from '../model/flow';
+
 import {coloredLog as console} from './colored-log';
-export function sanitizeInput() {
+
+export function sanitizeInput(): IFlow {
   const params = process.argv.slice(2);
   if (!params[0]) {
     console.error('Error: Missing source path folder.');
@@ -15,7 +18,9 @@ export function sanitizeInput() {
   }
   const destFolder = params[1];
   console.log(`Destination folder ${destFolder}`);
-  return { destFolder: destFolder, srcFolder: srcFolder }
+  const array = srcFolder.split('/');
+  const entity = array[array.length - 1];
+  return { destFolder: destFolder, srcFolder: srcFolder, entity: entity }
 }
 export function checkExist() {
   const params = process.argv.slice(2);
