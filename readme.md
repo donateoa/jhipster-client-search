@@ -16,9 +16,9 @@ and in a separate terminal we run:
 ````
 npm run watch-node
 ````
-you can set [`projectFolder`,`outputFolder`] environment variables in order to skip some of prompts.
+you can set [`projectFolder`,`outputFolder`,`role`,`entityName`] environment variables in order to skip some of prompts.
 ````
-projectFolder=/Users/alessandrodonateo/dev/elif/wp-monolith-svc/src/main/webapp/app/ outputFolder=/Users/alessandrodonateo/dev/elif/wp-monolith-svc/src/main/webapp/app/pages/admin npm run watch-node
+projectFolder=/Users/alessandrodonateo/dev/elif/wp-monolith-svc/src/main/webapp/app outputFolder=admin role=ROLE_ADMIN entityName=client npm run watch-node
 ````
 # Run the Application
 Only starts the application

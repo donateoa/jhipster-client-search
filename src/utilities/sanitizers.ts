@@ -40,3 +40,5 @@ export function checkExist() {
   console.log(`Detected destination folder ${destFolder}`);
   return { destFolder: destFolder, srcFolder: srcFolder }
 }
+export const Capitalized = (name: string) =>
+    name.charAt(0).toUpperCase() + name.slice(1)

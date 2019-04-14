@@ -32,7 +32,8 @@
     "typescript": "^3.4.3"
   },
   "dependencies": {
-    "fs-extra": "^7.0.1",
-    "prompt": "^1.0.0"
+    "prepend": "^1.0.2",
+    "prompt": "^1.0.0",
+    "replace-in-file": "^3.4.4"
   }
 }
