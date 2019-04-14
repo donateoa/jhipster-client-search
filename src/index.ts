@@ -1,11 +1,11 @@
 import * as fs from 'fs'
 import * as prompt from 'prompt';
 
+import {tapComponent} from './generator/component';
 import {tapModule} from './generator/module';
 import {tapParentModule} from './generator/parent-module';
 import {tapRouting} from './generator/route';
 import {IModel, Model, RoleType} from './model';
-import {coloredLog as console} from './utilities/colored-log';
 
 const projectFolder = process.env.projectFolder;
 const outputFolder = process.env.outputFolder;
@@ -74,6 +74,7 @@ askPrompts()
     .then((model: Model) => tapRouting(model).then(() => model))
     .then((model: Model) => tapModule(model).then(() => model))
     .then((model: Model) => tapParentModule(model).then(() => model))
+    .then((model: Model) => tapComponent(model).then(() => model))
     .then(() => console.log('success'))
     .catch((err: any) => console.error(err));
 

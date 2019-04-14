@@ -20,6 +20,13 @@ export const Pfile = {
       });
     });
   },
+  copyFile(source: string, destination: string) {
+    return new Promise(function(resolve, reject) {
+      fs.copyFile(source, destination, (err) => {
+        err ? reject(err) : resolve('copied');
+      });
+    });
+  },
   prepend(file: string, text: string) {
     return new Promise(function(resolve, reject) {
       prepend(file, text, function(err: any) {
