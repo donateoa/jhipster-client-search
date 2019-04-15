@@ -6,13 +6,15 @@ const replace = require('replace-in-file');
 
 function addDeclaration(file: string, moduleName: string, entityName: string) {
   const test = `${entityName}/${entityName}.module';`
+  const importUrl =
+      `import {${moduleName}} from './${entityName}/${entityName}.module';`;
   return Pfile.readFile(file).then((data: string) => {
     if (data.includes(test)) {
       console.log('test match: Not added to declaration', test);
       return 'match';
     } else {
       console.log('test not match: added to declaration', file);
-      return Pfile.prepend(file, test).then(() => 'updated');
+      return Pfile.prepend(file, importUrl).then(() => 'updated');
     }
   })
 }
