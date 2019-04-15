@@ -4,9 +4,10 @@ import * as prompt from 'prompt';
 import {tapComponent} from './generator/component';
 import {tapComponentHtml} from './generator/component.html';
 import {tapModule} from './generator/module';
+import {tapNavbar} from './generator/navbar';
 import {tapParentModule} from './generator/parent-module';
 import {tapRouting} from './generator/route';
-import {IModel, Model, RoleType} from './model';
+import {IModel, Model} from './model';
 
 const projectFolder = process.env.projectFolder;
 const outputFolder = process.env.outputFolder;
@@ -77,6 +78,7 @@ askPrompts()
     .then((model: Model) => tapParentModule(model).then(() => model))
     .then((model: Model) => tapComponent(model).then(() => model))
     .then((model: Model) => tapComponentHtml(model).then(() => model))
+    .then((model: Model) => tapNavbar(model).then(() => model))
     .then(() => console.log('success'))
     .catch((err: any) => console.error(err));
 
