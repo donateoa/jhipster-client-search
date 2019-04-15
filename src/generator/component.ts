@@ -12,7 +12,7 @@ function addProperties(file: string, entityName: string) {
     to: `
     criteria: any;
     filterTemplate = new ${capitalized}();
-    
+
     constructor(`,
   };
   return replace(options).then(() => 'updated');
@@ -47,7 +47,20 @@ function amendService(file: string, entityName: string) {
   };
   return replace(options).then(() => 'updated');
 }
-
+function amendTransition(
+    file: string, entityName: string, outputFolder: string) {
+  const options = {
+    files: file,
+    from: `this.router.navigate(['/${entityName}']`,
+    to: `this.router.navigate(['${outputFolder}/${entityName}']`,
+  };
+  return replace(options).then(() => 'updated');
+}
+function addDeclaration(file: string, entityName: string) {
+  const model = Capitalized(entityName);
+  const test = `import {${model}} from 'app/shared/model//${entityName}.model';`
+  return Pfile.prepend(file, test).then(() => 'updated');
+}
 export function tapComponent(model: Model) {
   const source =
       `${model.projectFolder}/entities/${model.entityName}/${model.entityName}.component.ts`;
@@ -59,7 +72,10 @@ export function tapComponent(model: Model) {
       .then(() => addSnipets(destination))
       .then(() => amendLoadData(destination))
       .then(() => amendService(destination, model.entityName))
-
+      .then(
+          () => amendTransition(
+              destination, model.entityName, model.outputFolder))
+      .then(() => addDeclaration(destination, model.entityName))
       .then((data: any) => {
         console.log('added file: ', destination);
         return data;

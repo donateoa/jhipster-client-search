@@ -10,9 +10,9 @@ function getTemplate(model: Model) {
   import {UserRouteAccessService} from 'app/core';
   import {JhiResolvePagingParams} from 'ng-jhipster';
   import {${capitalized}Component} from './${entityName}.component';
-  
+
   export const ${capitalized}Route: Routes = [{
-    path: '${model.outputFolder}/${entityName}',
+    path: '${entityName}',
     component: ${capitalized}Component,
     resolve: {pagingParams: JhiResolvePagingParams},
     data: {
@@ -22,7 +22,7 @@ function getTemplate(model: Model) {
     },
     canActivate: [UserRouteAccessService]
   }];
-  `;
+`;
 }
 
 

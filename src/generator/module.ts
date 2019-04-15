@@ -11,13 +11,13 @@ function getTemplate(entityName: string) {
     import { JhiLanguageHelper } from 'app/core';
     import { WiderpokerSharedModule } from 'app/shared';
     import { JhiLanguageService } from 'ng-jhipster';
-    
+
     import { ${capitalized}Component } from './${entityName}.component';
     import { ${capitalized}Route } from './${entityName}.route';
     // import { ${capitalized}Service} from '../../../entities/${entityName}/${entityName}.service';
-    
+
     const ENTITY_STATES = [...${capitalized}Route];
-    
+
     @NgModule({
         imports: [WiderpokerSharedModule, EntityFilterModule, RouterModule.forChild(ENTITY_STATES)],
         declarations: [${capitalized}Component],

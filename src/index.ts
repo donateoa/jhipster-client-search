@@ -2,6 +2,7 @@ import * as fs from 'fs'
 import * as prompt from 'prompt';
 
 import {tapComponent} from './generator/component';
+import {tapComponentHtml} from './generator/component.html';
 import {tapModule} from './generator/module';
 import {tapParentModule} from './generator/parent-module';
 import {tapRouting} from './generator/route';
@@ -75,6 +76,7 @@ askPrompts()
     .then((model: Model) => tapModule(model).then(() => model))
     .then((model: Model) => tapParentModule(model).then(() => model))
     .then((model: Model) => tapComponent(model).then(() => model))
+    .then((model: Model) => tapComponentHtml(model).then(() => model))
     .then(() => console.log('success'))
     .catch((err: any) => console.error(err));
 

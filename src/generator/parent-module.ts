@@ -4,8 +4,8 @@ import {Capitalized} from '../utilities/sanitizers';
 
 const replace = require('replace-in-file');
 
-function addDeclaration(file: string, moduleName: string) {
-  const test = `import {${moduleName}} from './client/client.module';`
+function addDeclaration(file: string, moduleName: string, entityName: string) {
+  const test = `${entityName}/${entityName}.module';`
   return Pfile.readFile(file).then((data: string) => {
     if (data.includes(test)) {
       console.log('test match: Not added to declaration', test);
@@ -26,7 +26,7 @@ function addToImports(file: string, moduleName: string) {
       const options = {
         files: file,
         from: 'imports: [',
-        to: `imports: [${moduleName},`,
+        to: `imports: [${moduleName}, `,
       };
       console.log('test not match: added to imports', file);
       return replace(options).then(() => 'updated');
@@ -44,5 +44,5 @@ export function tapParentModule(model: Model) {
     2. addDeclaration
   */
   return addToImports(file, moduleName)
-      .then(() => addDeclaration(file, moduleName));
+      .then(() => addDeclaration(file, moduleName, model.entityName));
 }
