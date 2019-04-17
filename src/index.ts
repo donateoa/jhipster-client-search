@@ -8,13 +8,12 @@ import {tapNavbar} from './generator/navbar';
 import {tapParentModule} from './generator/parent-module';
 import {tapRouting} from './generator/route';
 import {IModel, Model} from './model';
+import {Capitalized, LowerFirstChar} from './utilities/sanitizers';
 
 const projectFolder = process.env.projectFolder;
 const outputFolder = process.env.outputFolder;
 const role = process.env.role;
-const entityName = process.env.entityName;
-
-let model: IModel;
+const entityFolder = process.env.entityFolder;
 
 const schema = {
   properties: {
@@ -25,10 +24,10 @@ const schema = {
       description:
           'Enter the absolute path app folder of your jhipster project',
     },
-    entityName: {
+    entityFolder: {
       type: 'string',
-      default: entityName,
-      description: 'Enter the name of entity to clone',
+      default: entityFolder,
+      description: 'Enter the folder of entity to clone',
       required: true,
     },
     outputFolder: {
@@ -37,7 +36,7 @@ const schema = {
       default: outputFolder,
       description: 'Enter the relative path of output folder',
     },
-    restApi: {type: 'string', required: true, default: entityName},
+    restApi: {type: 'string', required: true, default: entityFolder},
     role: {
       type: 'string',
       required: true,
@@ -58,11 +57,17 @@ function askPrompts() {
     });
   });
 }
-
+function sanitizeInput(model: Model) {
+  model.entityName =
+      model.entityFolder.split('-').map(t => Capitalized(t)).join('');
+  model.translationLabel = LowerFirstChar(model.entityName);
+  console.log(model);
+  return model;
+}
 function checkOrCreateFolder(model: Model) {
   return new Promise(function(resolve, reject) {
     const fFolder =
-        `${model.projectFolder}/pages/${model.outputFolder}/${model.entityName}`;
+        `${model.projectFolder}/pages/${model.outputFolder}/${model.entityFolder}`;
 
     if (!fs.existsSync(fFolder)) {
       fs.mkdirSync(fFolder);
@@ -72,6 +77,7 @@ function checkOrCreateFolder(model: Model) {
 }
 prompt.start();
 askPrompts()
+    .then((model: Model) => sanitizeInput(model))
     .then((model: Model) => checkOrCreateFolder(model))
     .then((model: Model) => tapRouting(model).then(() => model))
     .then((model: Model) => tapModule(model).then(() => model))

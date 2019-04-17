@@ -1,13 +1,11 @@
 import {Model} from '../model';
 import {Pfile} from '../utilities/files';
-import {Capitalized} from '../utilities/sanitizers';
 
 const replace = require('replace-in-file');
 
 function addMenuItem(file: string, model: Model) {
-  const capitalized = Capitalized(model.entityName);
   const test =
-      `data-search-client-root-${model.outputFolder}="${model.entityName}"`
+      `data-search-client-root-${model.outputFolder}="${model.entityFolder}"`
   return Pfile.readFile(file).then((data: string) => {
     if (data.includes(test)) {
       console.log('test match: Not added to imports', test);
@@ -17,11 +15,11 @@ function addMenuItem(file: string, model: Model) {
         files: file,
         from:
             `<!-- data-search-client-root-${model.outputFolder} - search-client module will add new menu items here -->`,
-        to: `<li data-search-client-root-${model.outputFolder}="${model.entityName}">
-                        <a class="dropdown-item" routerLink="${model.outputFolder}/${model.entityName}" routerLinkActive="active"
+        to: `<li data-search-client-root-${model.outputFolder}="${model.entityFolder}">
+                        <a class="dropdown-item" routerLink="${model.outputFolder}/${model.entityFolder}" routerLinkActive="active"
                             [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.${model.entityName}">${capitalized}</span>
+                            <span jhiTranslate="global.menu.entities.${model.translationLabel}">${model.entityName}</span>
                         </a>
                     </li>
                     <!-- data-search-client-root-${model.outputFolder} - search-client module will add new menu items here -->`,

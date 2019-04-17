@@ -4,10 +4,10 @@ import {Capitalized} from '../utilities/sanitizers';
 
 const replace = require('replace-in-file');
 
-function addDeclaration(file: string, moduleName: string, entityName: string) {
-  const test = `${entityName}/${entityName}.module';`
+function addDeclaration(file: string, model: Model) {
+  const test = `${model.entityFolder}/${model.entityFolder}.module';`
   const importUrl =
-      `import {${moduleName}} from './${entityName}/${entityName}.module';`;
+      `import {${model.entityName}PageModule} from './${model.entityFolder}/${model.entityFolder}.module';`;
   return Pfile.readFile(file).then((data: string) => {
     if (data.includes(test)) {
       console.log('test match: Not added to declaration', test);
@@ -18,8 +18,8 @@ function addDeclaration(file: string, moduleName: string, entityName: string) {
     }
   })
 }
-function addToImports(file: string, moduleName: string) {
-  const test = moduleName;
+function addToImports(file: string, model: Model) {
+  const test = `${model.entityName}PageModule`;
   return Pfile.readFile(file).then((data: string) => {
     if (data.includes(test)) {
       console.log('test match: Not added to imports', test);
@@ -28,7 +28,7 @@ function addToImports(file: string, moduleName: string) {
       const options = {
         files: file,
         from: 'imports: [',
-        to: `imports: [${moduleName}, `,
+        to: `imports: [${test}, `,
       };
       console.log('test not match: added to imports', file);
       return replace(options).then(() => 'updated');
@@ -39,12 +39,10 @@ export function tapParentModule(model: Model) {
   const capitalized = Capitalized(model.entityName);
   const file =
       `${model.projectFolder}/pages/${model.outputFolder}/${model.outputFolder}.module.ts`;
-  const moduleName = `${capitalized}PageModule`;
   /*
   NOTE: call with this sequence
     1. addToImport
     2. addDeclaration
   */
-  return addToImports(file, moduleName)
-      .then(() => addDeclaration(file, moduleName, model.entityName));
+  return addToImports(file, model).then(() => addDeclaration(file, model));
 }

@@ -5,6 +5,8 @@ export declare type RoleType = 'ROLE_ADMIN' | 'ROLE_USER' |
 export interface IModel {
   projectFolder: string;
   entityName: string;
+  translationLabel: string;
+  entityFolder: string;
   outputFolder: string;
   restApi: string;
   role: RoleType;
@@ -13,6 +15,7 @@ export interface IModel {
 export class Model implements IModel {
   constructor(
       public projectFolder: string, public entityName: string,
+      public translationLabel: string, public entityFolder: string,
       public outputFolder: string, public restApi: string,
       public role: RoleType) {}
 }

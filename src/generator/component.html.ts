@@ -16,9 +16,9 @@ function addProperties(file: string) {
 
 export function tapComponentHtml(model: Model) {
   const source =
-      `${model.projectFolder}/entities/${model.entityName}/${model.entityName}.component.html`;
+      `${model.projectFolder}/entities/${model.entityFolder}/${model.entityFolder}.component.html`;
   const destination =
-      `${model.projectFolder}/pages/${model.outputFolder}/${model.entityName}/${model.entityName}.component.html`;
+      `${model.projectFolder}/pages/${model.outputFolder}/${model.entityFolder}/${model.entityFolder}.component.html`;
 
   return Pfile.copyFile(source, destination)
       .then(() => addProperties(destination))
