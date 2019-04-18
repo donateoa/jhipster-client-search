@@ -74,5 +74,5 @@ npm run watch-node
 ````
 you can set [`projectFolder`,`outputFolder`,`role`,`entityFolder`] environment variables in order to skip some of prompts.
 ````
-projectFolder=/Users/alessandrodonateo/dev/elif/wp-monolith-svc/src/main/webapp/app outputFolder=search role=ROLE_ADMIN entityFolder=client npm run watch-node
+projectFolder=/your-project-folder/src/main/webapp/app outputFolder=search role=ROLE_ADMIN entityFolder=client npm run watch-node
 ````
