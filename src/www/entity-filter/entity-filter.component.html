@@ -1,0 +1,29 @@
+<div *ngIf="keys.length>0" class="row">
+  <div class="form-group col">
+    <label class="form-control-label" for="field_key">Key</label>
+    <select class="form-control" [(ngModel)]="currentFilter.key" id="field_key">
+      <option *ngFor="let key of keys" [value]="key">{{key}}</option>
+    </select>
+  </div>
+  <div class="form-group col">
+    <label class="form-control-label" for="field_value">Value</label>
+    <input type="text" class="form-control" id="field_value" [(ngModel)]="currentFilter.value" placeholder="Search" />
+  </div>
+  <div class="col" style="padding-top: 30px;" class="text-center">
+    <button type="button" class="btn btn-outline-primary" (click)="addFilter()">
+      <fa-icon [icon]="'search'"></fa-icon>
+    </button>
+    <button *ngIf="currentFilter.key" type="button" class="btn btn-outline-danger" (click)="clear()">
+      <fa-icon [icon]="'times'"></fa-icon>
+    </button>
+    <span *ngIf="showDateFormat">DateFormat</span>
+  </div>
+</div>
+<div>
+  <span class="badge badge-secondary" *ngFor="let chip of filterList" style="margin: 2px;">
+    <span style="line-height: 25px;">{{chip.key}} {{chip.value}}</span>
+    <button type="button" class="close" aria-label="Close" (click)="remove(chip)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </span>
+</div>

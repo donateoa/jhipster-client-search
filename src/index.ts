@@ -21,27 +21,26 @@ const schema = {
       type: 'string',
       default: projectFolder,
       required: true,
-      description:
-          'Enter the absolute path app folder of your jhipster project',
+      description: 'Absolute jhipster app path',
     },
     entityFolder: {
       type: 'string',
       default: entityFolder,
-      description: 'Enter the folder of entity to clone',
+      description: 'folder of entity to clone',
       required: true,
     },
     outputFolder: {
       type: 'string',
       required: true,
       default: outputFolder,
-      description: 'Enter the relative path of output folder',
+      description: 'Relative path of output folder',
     },
     restApi: {type: 'string', required: true, default: entityFolder},
     role: {
       type: 'string',
       required: true,
       default: role,
-      description: 'Enter the role that can access the UI',
+      description: 'role that can access the UI',
     },
   }
 };
