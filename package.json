@@ -1,7 +1,7 @@
 {
   "name": "jhipster-client-search",
   "version": "1.0.0",
-  "description": "A simple tool for add a search-bar in jhipster angular entities",
+  "description": "A tool for add a search-bar in jhipster angular entities",
   "main": "index.js",
   "scripts": {
     "build-ts": "tsc",
