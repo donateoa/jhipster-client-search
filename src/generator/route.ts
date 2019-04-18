@@ -7,11 +7,12 @@ function getTemplate(model: Model) {
   import {UserRouteAccessService} from 'app/core';
   import {JhiResolvePagingParams} from 'ng-jhipster';
   import {${model.entityName}Component} from './${model.entityFolder}.component';
+  import { CriteriaParamsResolve } from 'app/components/entity-filter/entity-filter.utils';
 
   export const ${model.entityName}Route: Routes = [{
     path: '${model.entityFolder}',
     component: ${model.entityName}Component,
-    resolve: {pagingParams: JhiResolvePagingParams},
+    resolve: {pagingParams: JhiResolvePagingParams, criteria: CriteriaParamsResolve },
     data: {
       authorities: ['${model.role}'],
       defaultSort: 'id,asc',

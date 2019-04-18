@@ -9,7 +9,7 @@
     "serve": "node dist/index.js",
     "watch-node": "nodemon dist/index.js",
     "watch-ts": "tsc -w",
-    "start-with-env": "projectFolder=/Users/alessandrodonateo/dev/elif/wp-monolith-svc/src/main/webapp/app outputFolder=search role=ROLE_ADMIN entityFolder=client npm run watch-node"
+    "start-with-env": "projectFolder=/Users/alessandrodonateo/dev/elif/wp-monolith-svc/src/main/webapp/app outputFolder=search role=ROLE_ADMIN entityFolder=widerpoker-rules npm run watch-node"
   },
   "repository": {
     "type": "git",

@@ -28,7 +28,8 @@ function addToImports(file: string, model: Model) {
       const options = {
         files: file,
         from: 'imports: [',
-        to: `imports: [${test}, `,
+        to: `imports: [
+        ${test},`,
       };
       console.log('test not match: added to imports', file);
       return replace(options).then(() => 'updated');

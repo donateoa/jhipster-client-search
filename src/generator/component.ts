@@ -33,8 +33,8 @@ function addSnipets(file: string) {
 function amendLoadData(file: string) {
   const options = {
     files: file,
-    from: /page: this.page/g,
-    to: `criteria: this.criteria, page: this.page`,
+    from: `.query({`,
+    to: `.query({criteria: this.criteria,`,
   };
   return replace(options).then(() => 'updated');
 }
@@ -47,12 +47,38 @@ function amendService(file: string, model: Model) {
   return replace(options).then(() => 'updated');
 }
 function amendTransition(file: string, model: Model) {
-  const options = {
-    files: file,
-    from: `this.router.navigate(['/${model.entityFolder}']`,
-    to: `this.router.navigate(['${model.outputFolder}/${model.entityFolder}']`,
-  };
-  return replace(options).then(() => 'updated');
+  const original = `queryParams: {`;
+  const newFunction =
+      `queryParams: {criteria: entityFilterDecodeCriteria(this.criteria),`;
+
+  return Pfile
+      .prepend(
+          file,
+          `import { entityFilterDecodeCriteria } from 'app/components/entity-filter/entity-filter.utils';`)
+      .then(t => replace({
+              files: file,
+              from: original,
+              to: newFunction,
+            }))
+      .then(
+          t => replace({
+            files: file,
+            from: `this.router.navigate(['/${model.entityFolder}']`,
+            to: `this.router.navigate(['/${model.outputFolder}/${model.entityFolder}']`,
+          }))
+      .then(t => replace({
+              files: file,
+              from: `'/${model.entityFolder}',`,
+              to: `'/${model.outputFolder}/${model.entityFolder}',`,
+            }))
+      .then(
+          t => replace({
+            files: file,
+            from: `this.page = data.pagingParams.page;`,
+            to: `this.criteria = data.criteria; this.page = data.pagingParams.page;`,
+          }))
+
+      .then(() => 'updated');
 }
 function addDeclaration(file: string, model: Model) {
   const test =
