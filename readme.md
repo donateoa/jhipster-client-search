@@ -33,6 +33,23 @@ import { NgModule } from '@angular/core';
 export class SearchPagesModule {}
 
 ````
+Update Navbar. Add the follow snippet changing the `jhiHasAnyAuthority` and the `[outputFolder]` and the desctription of menu too.
+```
+            <li *jhiHasAnyAuthority="'ROLE_ORGANIZATION_OPERATOR'" ngbDropdown class="nav-item dropdown pointer"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
+                    <span>
+                        <fa-icon icon="th-list"></fa-icon>
+                        <span jhiTranslate="domain.menu.operator.main">
+                            Operators
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <!-- data-search-client-root-[outputFolder] - search-client module will add new menu items here -->
+                </ul>
+            </li>
+```
 
 When you run this app, you will be promped for:
 - Absolute jhipster app path: the path of your jhipster project, example `~your-project-folder/src/main/webapp/app`
