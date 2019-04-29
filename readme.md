@@ -53,7 +53,13 @@ Update Navbar. Add the follow snippet changing the `jhiHasAnyAuthority` and the 
                 </ul>
             </li>
 ```
-
+Finally add the following route into your app.routing.ts
+```
+{
+                    path: 'search',
+                    loadChildren: './pages/search/search.module#SearchPagesModule'
+                },
+```
 When you run this app, you will be promped for:
 - Absolute jhipster app path: the path of your jhipster project, example `~your-project-folder/src/main/webapp/app`
 - folder of entity to clone: the generated folder, example `foo`
