@@ -10,7 +10,9 @@ filter Foo
 ````
 
 ## Copy EntityFilter into your Project
-Copy the source folder [src/www/entity_filter](https://github.com/donateoa/jhipster-client-search/tree/master/src) into the `src/main/webapp/app/components`.
+Copy the source folder [src/www/entity_filter](https://github.com/donateoa/jhipster-client-search/tree/master/src) into the `src/main/webapp/app/components`. Once you copied the folder replace the name of your new project in entity-filter.module.ts
+NOTA: until it have been done replace the name of project in also in
+`src/generator/route.ts` and `src/generator/module.ts`
 
 ## Add search bar
 Let JhipsterClientSearch make the job for you. Basically it clone the original code and add the Search Bar, extending or reuse the jhipster code whenever is possible.
