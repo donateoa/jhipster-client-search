@@ -10,7 +10,7 @@ filter Foo
 ````
 
 ## Copy EntityFilter into your Project
-Copy the source folder [src/www/entity_filter](https://github.com/donateoa/jhipster-client-search/tree/master/src) whenever you want inside the `src/main/webapp/app`.
+Copy the source folder [src/www/entity_filter](https://github.com/donateoa/jhipster-client-search/tree/master/src) into the `src/main/webapp/app/components`.
 
 ## Add search bar
 Let JhipsterClientSearch make the job for you. Basically it clone the original code and add the Search Bar, extending or reuse the jhipster code whenever is possible.
