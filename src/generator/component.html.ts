@@ -16,7 +16,7 @@ function addProperties(file: string) {
 
 export function tapComponentHtml(model: Model) {
   const source =
-      `${model.projectFolder}/entities/${model.entityFolder}/${model.entityFolder}.component.html`;
+      `${model.projectFolder}/entities/${model.microservice}${model.entityFolder}/${model.entityFolder}.component.html`;
   const destination =
       `${model.projectFolder}/pages/${model.outputFolder}/${model.entityFolder}/${model.entityFolder}.component.html`;
 

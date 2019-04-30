@@ -42,7 +42,7 @@ function amendService(file: string, model: Model) {
   const options = {
     files: file,
     from: `./${model.entityFolder}.service`,
-    to: `../../../entities/${model.entityFolder}/${model.entityFolder}.service`,
+    to: `../../../entities/${model.microservice}${model.entityFolder}/${model.entityFolder}.service`,
   };
   return replace(options).then(() => 'updated');
 }
@@ -82,12 +82,12 @@ function amendTransition(file: string, model: Model) {
 }
 function addDeclaration(file: string, model: Model) {
   const test =
-      `import {${model.entityName}} from 'app/shared/model/${model.entityFolder}.model';`
+      `import {${model.entityName}} from 'app/shared/model/${model.microservice}${model.entityFolder}.model';`
   return Pfile.prepend(file, test).then(() => 'updated');
 }
 export function tapComponent(model: Model) {
   const source =
-      `${model.projectFolder}/entities/${model.entityFolder}/${model.entityFolder}.component.ts`;
+      `${model.projectFolder}/entities/${model.microservice}${model.entityFolder}/${model.entityFolder}.component.ts`;
   const destination =
       `${model.projectFolder}/pages/${model.outputFolder}/${model.entityFolder}/${model.entityFolder}.component.ts`;
 

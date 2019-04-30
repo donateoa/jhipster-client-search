@@ -1,13 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { WiderpokerSharedCommonModule } from 'app/shared';
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {SbGatewaySharedCommonModule} from 'app/shared';
 
-import { EntityFilterComponent } from './entity-filter.component';
+import {EntityFilterComponent} from './entity-filter.component';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, WiderpokerSharedCommonModule],
-    declarations: [EntityFilterComponent],
-    exports: [EntityFilterComponent]
+  imports: [CommonModule, FormsModule, SbGatewaySharedCommonModule],
+  declarations: [EntityFilterComponent],
+  exports: [EntityFilterComponent]
 })
-export class EntityFilterModule {}
+export class EntityFilterModule {
+}

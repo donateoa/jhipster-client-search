@@ -29,7 +29,7 @@ function addToImports(file: string, model: Model) {
         files: file,
         from: 'imports: [',
         to: `imports: [
-        ${test},`,
+        ${test}, `,
       };
       console.log('test not match: added to imports', file);
       return replace(options).then(() => 'updated');

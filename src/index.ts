@@ -42,6 +42,11 @@ const schema = {
       default: role,
       description: 'role that can access the UI',
     },
+    microservice: {
+      type: 'string',
+      default: 'sbodds/',
+      description: 'leave blank or end this with /',
+    },
   }
 };
 
