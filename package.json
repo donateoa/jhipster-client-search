@@ -9,7 +9,7 @@
     "serve": "node dist/index.js",
     "watch-node": "nodemon dist/index.js",
     "watch-ts": "tsc -w",
-    "start-with-env": "projectFolder=/Users/alessandrodonateo/dev/sportsbook/sb-gateway/src/main/webapp/app outputFolder=trader role=ROLE_ADMIN entityFolder=extra-user npm run watch-node"
+    "start-with-env": "projectFolder=/Users/alessandrodonateo/dev/elif/wp-monolith-svc/src/main/webapp/app outputFolder=search role=ROLE_ADMIN entityFolder=cash-session-live npm run watch-node"
   },
   "repository": {
     "type": "git",

@@ -8,7 +8,7 @@ function getTemplate(model: Model) {
     import { RouterModule } from '@angular/router';
     import { EntityFilterModule } from 'app/components/entity-filter/entity-filter.module';
     import { JhiLanguageHelper } from 'app/core';
-    import { SbGatewaySharedModule } from 'app/shared';
+    import { WiderpokerSharedModule } from 'app/shared';
     import { JhiLanguageService } from 'ng-jhipster';
 
     import { ${model.entityName}Component } from './${model.entityFolder}.component';
@@ -18,7 +18,7 @@ function getTemplate(model: Model) {
     const ENTITY_STATES = [...${model.entityName}Route];
 
     @NgModule({
-        imports: [SbGatewaySharedModule, EntityFilterModule, RouterModule.forChild(ENTITY_STATES)],
+        imports: [WiderpokerSharedModule, EntityFilterModule, RouterModule.forChild(ENTITY_STATES)],
         declarations: [${model.entityName}Component],
         entryComponents: [${model.entityName}Component],
         providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],

@@ -44,7 +44,7 @@ const schema = {
     },
     microservice: {
       type: 'string',
-      default: 'sbodds/',
+      default: '',
       description: 'leave blank or end this with /',
     },
   }
