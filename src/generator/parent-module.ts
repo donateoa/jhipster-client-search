@@ -10,10 +10,10 @@ function addDeclaration(file: string, model: Model) {
       `import {${model.entityName}PageModule} from './${model.entityFolder}/${model.entityFolder}.module';`;
   return Pfile.readFile(file).then((data: string) => {
     if (data.includes(test)) {
-      console.log('test match: Not added to declaration', test);
+      console.log('Already imported, Not add ' + test + ' to declaration');
       return 'match';
     } else {
-      console.log('test not match: added to declaration', file);
+      console.log('add decalartion ' + test + ' to ', file);
       return Pfile.prepend(file, importUrl).then(() => 'updated');
     }
   })
@@ -22,7 +22,7 @@ function addToImports(file: string, model: Model) {
   const test = `${model.entityName}PageModule`;
   return Pfile.readFile(file).then((data: string) => {
     if (data.includes(test)) {
-      console.log('test match: Not added to imports', test);
+      console.log('Already imported, Not add ' + test + ' to imports');
       return 'match';
     } else {
       const options = {
@@ -31,7 +31,7 @@ function addToImports(file: string, model: Model) {
         to: `imports: [
         ${test}, `,
       };
-      console.log('test not match: added to imports', file);
+      console.log('add import ' + test + ' to ', file);
       return replace(options).then(() => 'updated');
     }
   })
