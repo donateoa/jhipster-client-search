@@ -11,6 +11,8 @@ export interface IModel {
   restApi: string;
   role: RoleType;
   microservice: string;
+  projectName: string;
+  useTranslation: string
 }
 
 export class Model implements IModel {
@@ -18,5 +20,6 @@ export class Model implements IModel {
       public projectFolder: string, public entityName: string,
       public translationLabel: string, public entityFolder: string,
       public outputFolder: string, public restApi: string,
-      public role: RoleType, public microservice: string) {}
+      public role: RoleType, public microservice: string,
+      public projectName: string, public useTranslation: string) {}
 }

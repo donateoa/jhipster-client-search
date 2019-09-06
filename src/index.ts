@@ -14,14 +14,29 @@ const projectFolder = process.env.projectFolder;
 const outputFolder = process.env.outputFolder;
 const role = process.env.role;
 const entityFolder = process.env.entityFolder;
+const projectName = process.env.projectName;
+const useTranslation =
+    process.env.useTranslation ? process.env.useTranslation : 'y'
 
 const schema = {
   properties: {
+    projectName: {
+      type: 'string',
+      default: projectName,
+      required: true,
+      description: 'Project Name => used for build ProjectNameSharedModule',
+    },
     projectFolder: {
       type: 'string',
       default: projectFolder,
       required: true,
       description: 'Absolute jhipster app path',
+    },
+    useTranslation: {
+      type: 'string',
+      default: useTranslation,
+      required: true,
+      description: 'Use translation',
     },
     entityFolder: {
       type: 'string',
