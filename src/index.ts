@@ -35,7 +35,7 @@ const schema = {
       default: outputFolder,
       description: 'Relative path of output folder',
     },
-    restApi: {type: 'string', required: true, default: entityFolder},
+    restApi: {type: 'string', required: true, default: `${entityFolder}s`},
     role: {
       type: 'string',
       required: true,
