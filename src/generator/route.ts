@@ -4,7 +4,7 @@ import {Pfile} from '../utilities/files';
 function getTemplate(model: Model) {
   return `
   import {Routes} from '@angular/router';
-  import {UserRouteAccessService} from 'app/core';
+  import {UserRouteAccessService} from 'app/core/auth/user-route-access-service';
   import {JhiResolvePagingParams} from 'ng-jhipster';
   import {${model.entityName}Component} from './${model.entityFolder}.component';
   import { CriteriaParamsResolve } from 'app/components/entity-filter/entity-filter.utils';

@@ -29,6 +29,7 @@ function addMenuItem(file: string, model: Model) {
     }
   })
 }
+
 export function tapNavbar(model: Model) {
   const file = `${model.projectFolder}/layouts/navbar/navbar.component.html`;
 
