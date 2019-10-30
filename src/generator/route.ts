@@ -16,7 +16,7 @@ function getTemplate(model: Model) {
     data: {
       authorities: ['${model.role}'],
       defaultSort: 'id,asc',
-      pageTitle: 'widerpokerApp.${model.translationLabel}.home.title'
+      pageTitle: 'ldapAccountApp.${model.translationLabel}.home.title'
     },
     canActivate: [UserRouteAccessService]
   }];

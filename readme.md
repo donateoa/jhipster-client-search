@@ -26,7 +26,7 @@ before run the generator
 app/pages/search
 app/pages/search/search.module.ts
 ```
-search-module.ts
+search.module.ts
 ````
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
