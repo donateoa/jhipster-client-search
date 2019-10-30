@@ -12,7 +12,7 @@ function getTemplate(model: Model) {
     }`;
   if (model.useTranslation == 'y') {
     translationImport = `
-        import { JhiLanguageHelper } from 'app/core';
+        import { JhiLanguageHelper } from 'app/core/language/language.helper';
         import { JhiLanguageService } from 'ng-jhipster';
         `;
     translationConstructor = `
@@ -33,7 +33,7 @@ function getTemplate(model: Model) {
     import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
     import { RouterModule } from '@angular/router';
     import { EntityFilterModule } from 'app/components/entity-filter/entity-filter.module';
-    import { ${model.projectName}SharedModule } from 'app/shared';
+    import { ${model.projectName}SharedModule } from 'app/shared/shared.module';
 ${translationImport}
     import { ${model.entityName}Component } from './${model.entityFolder}.component';
     import { ${model.entityName}Route } from './${model.entityFolder}.route';

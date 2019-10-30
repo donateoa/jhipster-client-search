@@ -6,8 +6,7 @@ const replace = require('replace-in-file');
 function addProperties(file: string, model: Model) {
   const options = {
     files: file,
-    from: `
-    constructor(`,
+    from: `constructor(`,
     to: `
     criteria: any;
     filterTemplate = new ${model.entityName}();
