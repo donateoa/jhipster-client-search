@@ -82,10 +82,11 @@ export const createRequestOption = (req?: any): HttpParams => {
 ```
 Finally add the following route into your app.routing.ts
 ```
-{
-                    path: 'search',
-                    loadChildren: './pages/search/search.module#SearchPagesModule'
-                },
+        {
+          path: 'search',
+          loadChildren: () => import('./pages/search/search.module')
+                                  .then(m => m.SearchPagesModule)
+        },
 ```
 When you run this app, you will be promped for:
 - Absolute jhipster app path: the path of your jhipster project, example `~your-project-folder/src/main/webapp/app`
