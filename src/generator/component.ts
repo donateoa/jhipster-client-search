@@ -18,10 +18,8 @@ function addProperties(file: string, model: Model) {
 function addSnipets(file: string) {
   const options = {
     files: file,
-    from: `
-    loadAll() {`,
-    to: `
-    changeFilter(criteria) {
+    from: `loadAll() {`,
+    to: `changeFilter(criteria) {
         this.criteria = criteria;
         this.transition();
     }

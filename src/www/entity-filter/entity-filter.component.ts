@@ -1,6 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IEntityFilter} from './entity-filter.model';
 
+function flattenDeep(arr1) {
+  return arr1.reduce(
+      (acc, val) =>
+          Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val),
+      []);
+};
+
 @Component({
   selector: 'jhi-entity-filter',
   templateUrl: './entity-filter.component.html',
@@ -24,7 +31,8 @@ export class EntityFilterComponent implements OnInit {
     if (entity && Object.keys(entity).length > 0) {
       this._entity = entity;
       const keys = Object.keys(this._entity);
-      this.keys = [...keys.map(k => this.filtersKey.map(t => k + '.' + t))];
+      this.keys =
+          flattenDeep(keys.map(k => this.filtersKey.map(t => k + '.' + t)));
     }
   }
 
